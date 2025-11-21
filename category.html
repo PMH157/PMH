@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Mục Sản Phẩm - 1NT3Rnet</title>
+    <link rel="stylesheet" href="css/style_user.css">
+    <link rel="stylesheet" href="css/style_category.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="layout-container">
+        <!-- Sidebar Navigation (giống index_user.html) -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2 class="sidebar-logo">1NT3Rnet</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <h3 class="nav-title">Danh Mục</h3>
+                    <ul class="nav-menu">
+                        <li class="nav-item">
+                            <a href="category.html?type=all" class="nav-link">
+                                <i class="fas fa-home"></i>
+                                <span>Tất Cả Sản Phẩm</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="category.html?type=ao" class="nav-link">
+                                <i class="fas fa-tshirt"></i>
+                                <span>Áo</span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="category.html?type=ao-thun">Áo thun</a></li>
+                                <li><a href="category.html?type=ao-so-mi">Áo sơ mi</a></li>
+                                <li><a href="category.html?type=ao-khoac">Áo khoác</a></li>
+                                <li><a href="category.html?type=ao-len">Áo len</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="category.html?type=quan" class="nav-link">
+                                <i class="fas fa-vest"></i>
+                                <span>Quần</span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="category.html?type=quan-jeans">Quần jeans</a></li>
+                                <li><a href="category.html?type=quan-tay">Quần tây</a></li>
+                                <li><a href="category.html?type=quan-kaki">Quần kaki</a></li>
+                                <li><a href="category.html?type=quan-short">Quần short</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="category.html?type=vay" class="nav-link">
+                                <i class="fas fa-female"></i>
+                                <span>Váy</span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="category.html?type=vay-lien">Váy liền</a></li>
+                                <li><a href="category.html?type=vay-xoe">Váy xòe</a></li>
+                                <li><a href="category.html?type=vay-midi">Váy midi</a></li>
+                                <li><a href="category.html?type=vay-maxi">Váy maxi</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="category.html?type=phu-kien" class="nav-link">
+                                <i class="fas fa-vest-patches"></i>
+                                <span>Phụ Kiện</span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="category.html?type=mu">Mũ</a></li>
+                                <li><a href="category.html?type=khan-choang">Khăn choàng</a></li>
+                                <li><a href="category.html?type=tui-xach">Túi xách</a></li>
+                                <li><a href="category.html?type=that-lung">Thắt lưng</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3 class="nav-title">Tài Khoản</h3>
+                    <ul class="nav-menu">
+                        <li class="nav-item">
+                            <a href="cart.html" class="nav-link">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span>Giỏ Hàng</span>
+                                <span class="cart-count-sidebar">0</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" id="sidebarProfile">
+                                <i class="fas fa-user"></i>
+                                <span>Tài Khoản</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="main-header">
+                <div class="header-container">
+                    <button class="sidebar-toggle" id="sidebarToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="header-right">
+                        <div class="user-info" id="userInfo"></div>
+                        <a href="cart.html" class="cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Category Content -->
+            <section class="category-section">
+                <div class="category-header">
+                    <h1 id="categoryTitle">Tất Cả Sản Phẩm</h1>
+                    <p id="categoryDescription">Khám phá tất cả sản phẩm thời trang của chúng tôi</p>
+                </div>
+
+                <div class="category-filters">
+                    <div class="filter-group">
+                        <label for="sortBy">Sắp xếp:</label>
+                        <select id="sortBy">
+                            <option value="name">Tên A-Z</option>
+                            <option value="name-desc">Tên Z-A</option>
+                            <option value="price">Giá thấp đến cao</option>
+                            <option value="price-desc">Giá cao đến thấp</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="priceRange">Khoảng giá:</label>
+                        <select id="priceRange">
+                            <option value="all">Tất cả</option>
+                            <option value="0-300000">Dưới 300.000₫</option>
+                            <option value="300000-500000">300.000₫ - 500.000₫</option>
+                            <option value="500000-1000000">500.000₫ - 1.000.000₫</option>
+                            <option value="1000000">Trên 1.000.000₫</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="products-count">
+                    <span id="productsCount">0 sản phẩm</span>
+                </div>
+
+                <div class="products-grid" id="categoryProducts">
+                    <!-- Sản phẩm sẽ được load bằng JavaScript -->
+                </div>
+
+                <div class="loading-spinner" id="loadingSpinner">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <span>Đang tải sản phẩm...</span>
+                </div>
+
+                <div class="no-products" id="noProducts" style="display: none;">
+                    <i class="fas fa-search"></i>
+                    <h3>Không tìm thấy sản phẩm</h3>
+                    <p>Hãy thử tìm kiếm với bộ lọc khác</p>
+                </div>
+            </section>
+
+            <footer>
+                <div class="footer-content">
+                    <!-- Footer content giữ nguyên -->
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Sidebar overlay for mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <script src="js/auth_check.js"></script>
+    <script src="js/script_user.js"></script>
+    <script src="js/script_category.js"></script>
+</body>
+</html>
