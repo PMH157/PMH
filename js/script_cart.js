@@ -1,8 +1,10 @@
-// script_cart.js - Đặt file này trong cùng thư mục
+// script_cart.js - File chính xử lý giỏ hàng
 document.addEventListener('DOMContentLoaded', function() {
     initializeCart();
-    setupCartEventListeners();
-    updateCartDisplay();
+    setupUserInfo();
+    loadCart();
+    setupCheckout();
+    updateCartCount();
 });
 
 // Khởi tạo giỏ hàng trong localStorage
@@ -12,130 +14,40 @@ function initializeCart() {
     }
 }
 
-// Thiết lập sự kiện cho các nút "Mua ngay"
-function setupCartEventListeners() {
-    // Thêm sự kiện cho tất cả các nút "Mua ngay"
-    const buyButtons = document.querySelectorAll('.buy-btn');
-    buyButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const productElement = this.closest('.item');
-            addToCart(productElement);
-        });
-    });
-}
-
-// Thêm sản phẩm vào giỏ hàng
-function addToCart(productElement) {
-    console.log('Adding to cart...');
+// Thiết lập thông tin user
+function setupUserInfo() {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const userInfo = document.getElementById('userInfo');
     
-    const product = {
-        id: generateProductId(productElement),
-        name: productElement.querySelector('h3').textContent,
-        price: parsePrice(productElement.querySelector('.price').textContent),
-        image: productElement.querySelector('img').src,
-        quantity: 1
-    };
-
-    let cart = JSON.parse(localStorage.getItem('cart'));
-    
-    // Kiểm tra xem sản phẩm đã có trong giỏ hàng chưa
-    const existingProductIndex = cart.findIndex(item => item.id === product.id);
-    
-    if (existingProductIndex !== -1) {
-        // Nếu đã có, tăng số lượng lên 1
-        cart[existingProductIndex].quantity += 1;
-        showAddToCartMessage(`Đã thêm "${product.name}" vào giỏ hàng (Số lượng: ${cart[existingProductIndex].quantity})`);
-    } else {
-        // Nếu chưa có, thêm sản phẩm mới
-        cart.push(product);
-        showAddToCartMessage(`Đã thêm "${product.name}" vào giỏ hàng`);
-    }
-    
-    localStorage.setItem('cart', JSON.stringify(cart));
-    updateCartDisplay();
-}
-
-// Tạo ID duy nhất cho sản phẩm
-function generateProductId(productElement) {
-    const name = productElement.querySelector('h3').textContent;
-    return 'product_' + name.replace(/\s+/g, '_').toLowerCase();
-}
-
-// Chuyển đổi giá từ chuỗi sang số
-function parsePrice(priceString) {
-    return parseInt(priceString.replace(/[^\d]/g, ''));
-}
-
-// Cập nhật hiển thị giỏ hàng (số lượng trên icon)
-function updateCartDisplay() {
-    const cart = JSON.parse(localStorage.getItem('cart'));
-    const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
-    
-    const cartCountElement = document.querySelector('.cart-count');
-    if (cartCountElement) {
-        cartCountElement.textContent = cartCount;
-    }
-}
-
-// Hiển thị thông báo khi thêm vào giỏ hàng
-function showAddToCartMessage(message) {
-    // Tạo toast message
-    const toast = document.createElement('div');
-    toast.className = 'cart-toast';
-    toast.innerHTML = `
-        <div class="toast-content">
-            <span class="toast-icon">✓</span>
-            <span class="toast-message">${message}</span>
-        </div>
-    `;
-    
-    // Thêm styles nếu chưa có
-    if (!document.querySelector('#cart-toast-styles')) {
-        const styles = document.createElement('style');
-        styles.id = 'cart-toast-styles';
-        styles.textContent = `
-            .cart-toast {
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                background: #27ae60;
-                color: white;
-                padding: 15px 20px;
-                border-radius: 5px;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-                z-index: 10000;
-                animation: slideInRight 0.3s ease-out;
-                max-width: 300px;
-            }
-            .toast-content {
-                display: flex;
-                align-items: center;
-                gap: 10px;
-            }
-            .toast-icon {
-                font-weight: bold;
-                font-size: 18px;
-            }
-            @keyframes slideInRight {
-                from {
-                    transform: translateX(100%);
-                    opacity: 0;
-                }
-                to {
-                    transform: translateX(0);
-                    opacity: 1;
-                }
-            }
+    if (currentUser) {
+        userInfo.innerHTML = `
+            <div class="user-welcome">
+                <span class="welcome-text">Xin chào,</span>
+                <span class="username">${currentUser.username}</span>
+            </div>
+            <button class="logout-btn">Đăng xuất</button>
         `;
-        document.head.appendChild(styles);
+        
+        document.querySelector('.logout-btn').addEventListener('click', function() {
+            localStorage.removeItem('currentUser');
+            window.location.href = 'index_user.html';
+        });
+    } else {
+        userInfo.innerHTML = `
+            <div class="auth-buttons">
+                <button class="auth-btn login-btn">Đăng nhập</button>
+                <button class="auth-btn register-btn">Đăng ký</button>
+            </div>
+        `;
+        
+        document.querySelector('.login-btn').addEventListener('click', function() {
+            window.location.href = 'login.html';
+        });
+        
+        document.querySelector('.register-btn').addEventListener('click', function() {
+            window.location.href = 'register.html';
+        });
     }
-    
-    document.body.appendChild(toast);
-    
-    // Tự động ẩn sau 3 giây
-    setTimeout(() => {
-        toast.remove();
-    }, 3000);
 }
 
 // Hàm để debug - kiểm tra giỏ hàng
@@ -144,3 +56,11 @@ function debugCart() {
     console.log('Current cart:', cart);
     console.log('Cart count:', cart.reduce((total, item) => total + item.quantity, 0));
 }
+
+// Xuất các hàm để sử dụng toàn cục (nếu cần)
+window.loadCart = loadCart;
+window.decreaseQuantity = decreaseQuantity;
+window.increaseQuantity = increaseQuantity;
+window.removeOneItem = removeOneItem;
+window.removeAllItems = removeAllItems;
+window.updateCartCount = updateCartCount;
