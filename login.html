@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập</title>
+    <link rel="stylesheet" href="style_login.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-form">
+            <h2>Đăng nhập</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Tên đăng nhập:</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mật khẩu:</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="btn-login">Đăng nhập</button>
+                <p class="switch-form">
+                    Chưa có tài khoản? <a href="register.html" id="switchToRegister">Đăng ký ngay</a>
+                </p>
+            </form>
+        </div>
+    </div>
+    <!-- Modal thông báo lỗi đăng nhập -->
+    <div id="loginErrorModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-icon error">⚠️</div>
+        <h3>Lỗi đăng nhập</h3>
+        <p>Tên đăng nhập hoặc mật khẩu không đúng!</p>
+        <button class="modal-close-btn">OK</button>
+    </div>
+</div>
+    <script src="script_login.js"></script>
+</body>
+</html>
