@@ -1,36 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
-<script src="auth_check.js"></script>
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản Lý Quần Áo</title>
-    <link rel="stylesheet" href="style.css">
-    <script>
-// Kiểm tra đăng nhập khi trang load
-document.addEventListener('DOMContentLoaded', function() {
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    
-    // Nếu chưa đăng nhập, chuyển đến unlog.html
-    if (!currentUser) {
-        window.location.href = 'unlog.html';
-        return;
-    }
-    
-    // Nếu không phải admin, chuyển đến index_user.html
-    if (currentUser.role !== 'admin') {
-        window.location.href = 'index_user.html';
-        return;
-    }
-});
-</script>
+    <title>Quản Lý Sản Phẩm - 1NT3Rnet</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Quản Lý Tủ Quần Áo</h1>
-            <p class="subtitle">Thêm, xem, sửa và xóa các món đồ trong tủ quần áo của bạn</p>
-            <!-- Thêm nút chuyển về trang user -->
+            <h1>Quản Lý Sản Phẩm 1NT3Rnet</h1>
+            <p class="subtitle">Thêm, xem, sửa và xóa các sản phẩm trong cửa hàng</p>
             <div class="header-actions">
                 <button id="switchToUserBtn" class="switch-user-btn">
                     <i class="fas fa-user"></i> Chuyển về trang người dùng
@@ -40,9 +21,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         <div class="main-content">
             <section class="form-section">
-                <h2>Thông Tin Quần Áo</h2>
-                <form id="clothing-form">
-                    <input type="hidden" id="item-id">
+                <h2>Thông Tin Sản Phẩm</h2>
+                <form id="product-form">
+                    <input type="hidden" id="product-id">
                     <div class="form-group">
                         <label for="name">Tên sản phẩm:</label>
                         <input type="text" id="name" placeholder="Ví dụ: Áo thun trắng" required>
@@ -78,7 +59,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                     <div class="form-group">
                         <label for="price">Giá (VNĐ):</label>
-                        <input type="number" id="price" min="0" placeholder="Ví dụ: 250000">
+                        <input type="number" id="price" min="0" placeholder="Ví dụ: 250000" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Hình ảnh:</label>
+                        <input type="text" id="image" placeholder="URL hình ảnh" required>
                     </div>
                     <div class="form-group">
                         <label for="quantity">Số lượng:</label>
@@ -93,8 +78,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="notes">Ghi chú:</label>
-                        <textarea id="notes" rows="3" placeholder="Ghi chú thêm về sản phẩm..."></textarea>
+                        <label for="notes">Mô tả:</label>
+                        <textarea id="notes" rows="3" placeholder="Mô tả sản phẩm..."></textarea>
                     </div>
                     <div class="form-buttons">
                         <button type="submit" id="save-btn">Thêm Mới</button>
@@ -104,143 +89,15 @@ document.addEventListener('DOMContentLoaded', function() {
             </section>
 
             <section class="list-section">
-                <h2>Danh Sách Quần Áo</h2>
-                <div class="clothing-list" id="clothing-list">
+                <h2>Danh Sách Sản Phẩm</h2>
+                <div class="product-list" id="product-list">
+                    <!-- Danh sách sản phẩm sẽ được hiển thị ở đây -->
                 </div>
             </section>
         </div>
     </div>
-    <script src="script.js"></script>
-    <!-- Thêm Font Awesome cho icon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script>
-    // Kiểm tra quyền truy cập khi trang load
-    document.addEventListener('DOMContentLoaded', function() {
-        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        
-        if (!currentUser || currentUser.role !== 'admin') {
-            // Nếu không phải admin, chuyển hướng về trang user
-            window.location.href = 'index_user.html';
-        }
-
-        // Thêm sự kiện cho nút chuyển về trang user
-        const switchToUserBtn = document.getElementById('switchToUserBtn');
-        if (switchToUserBtn) {
-            switchToUserBtn.addEventListener('click', function() {
-                switchToUserMode();
-            });
-        }
-    });
-
-    // Hàm chuyển về chế độ user
-    function switchToUserMode() {
-        // Tạo hoặc lấy tài khoản user mặc định
-        const defaultUser = {
-            username: 'user',
-            password: 'user123',
-            role: 'user'
-        };
-
-        // Lấy danh sách users từ localStorage
-        let users = JSON.parse(localStorage.getItem('users')) || [];
-        
-        // Kiểm tra xem user đã tồn tại chưa
-        const userExists = users.some(user => user.username === defaultUser.username);
-        
-        if (!userExists) {
-            // Nếu chưa tồn tại, thêm user vào danh sách
-            users.push(defaultUser);
-            localStorage.setItem('users', JSON.stringify(users));
-        }
-
-        // Đăng nhập tự động với tài khoản user
-        localStorage.setItem('currentUser', JSON.stringify({
-            username: defaultUser.username,
-            role: defaultUser.role
-        }));
-
-        // Chuyển hướng về trang user
-        window.location.href = 'index_user.html';
-    }
-
-    // Thêm tùy chọn: Tạo user ngẫu nhiên mỗi lần click
-    function switchToUserModeWithRandomUser() {
-        const randomId = Math.floor(Math.random() * 1000);
-        const randomUser = {
-            username: `user${randomId}`,
-            password: 'user123',
-            role: 'user'
-        };
-
-        // Lấy danh sách users từ localStorage
-        let users = JSON.parse(localStorage.getItem('users')) || [];
-        
-        // Thêm user mới vào danh sách
-        users.push(randomUser);
-        localStorage.setItem('users', JSON.stringify(users));
-
-        // Đăng nhập tự động với tài khoản user ngẫu nhiên
-        localStorage.setItem('currentUser', JSON.stringify({
-            username: randomUser.username,
-            role: randomUser.role
-        }));
-
-        // Chuyển hướng về trang user
-        window.location.href = 'index_user.html';
-    }
-    </script>
-
-    <style>
-    /* CSS cho nút chuyển đổi */
-    .header-actions {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-    }
-
-    .switch-user-btn {
-        background: #3498db;
-        color: white;
-        border: none;
-        padding: 10px 15px;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 14px;
-        transition: all 0.3s;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-
-    .switch-user-btn:hover {
-        background: #2980b9;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-
-    .switch-user-btn i {
-        font-size: 16px;
-    }
-
-    /* Đảm bảo header có position relative */
-    header {
-        position: relative;
-        padding: 20px;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-        .header-actions {
-            position: static;
-            text-align: center;
-            margin-top: 10px;
-        }
-        
-        .switch-user-btn {
-            width: 100%;
-            justify-content: center;
-        }
-    }
-    </style>
+    
+    <script src="js/auth_check.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

@@ -1,31 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<script src="auth_check.js"></script>
-<script src="script_cart.js"></script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1NT3RNET</title>
-    <link rel="stylesheet" href="style_user.css">
+    <title>1NT3Rnet - Thời Trang</title>
+    <link rel="stylesheet" href="css/style_user.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script>
-// Kiểm tra đăng nhập khi trang load
-document.addEventListener('DOMContentLoaded', function() {
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    
-    // Nếu chưa đăng nhập, chuyển đến unlog.html
-    if (!currentUser) {
-        window.location.href = 'unlog.html';
-        return;
-    }
-    
-    // Nếu là admin, chuyển đến index.html
-    if (currentUser.role === 'admin') {
-        window.location.href = 'index.html';
-        return;
-    }
-});
-</script>
 </head>
 <body>
   <header>
@@ -167,46 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <p>&copy;CREDIT: JUST ME BRO!!!</p>
     </div>
   </footer>
-<script>
-    // Xử lý hiển thị thông tin user khi trang load
-    document.addEventListener('DOMContentLoaded', function() {
-        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        const userInfo = document.getElementById('userInfo');
-        
-        if (currentUser) {
-            // Hiển thị thông tin user
-            userInfo.innerHTML = `
-                <div class="user-welcome">
-                    <span class="welcome-text">Xin chào,</span>
-                    <span class="username">${currentUser.username}</span>
-                </div>
-                <button class="logout-btn">Đăng xuất</button>
-            `;
-            
-            // Xử lý nút đăng xuất
-            document.querySelector('.logout-btn').addEventListener('click', function() {
-                localStorage.removeItem('currentUser');
-                window.location.reload();
-            });
-        } else {
-            // Hiển thị nút đăng nhập/đăng ký
-            userInfo.innerHTML = `
-                <div class="auth-buttons">
-                    <button class="auth-btn login-btn">Đăng nhập</button>
-                    <button class="auth-btn register-btn">Đăng ký</button>
-                </div>
-            `;
-            
-            // Xử lý nút đăng nhập/đăng ký
-            document.querySelector('.login-btn').addEventListener('click', function() {
-                window.location.href = 'login.html';
-            });
-            
-            document.querySelector('.register-btn').addEventListener('click', function() {
-                window.location.href = 'register.html';
-            });
-        }
-    });
-  </script>
+    <script src="js/auth_check.js"></script>
+    <script src="js/script_user.js"></script>
 </body>
 </html>
