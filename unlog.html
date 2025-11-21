@@ -1,193 +1,157 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1NT3RNET</title>
+    <title>1NT3Rnet - Vui lòng đăng nhập</title>
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/style_user.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-  <header>
-    <div class="header-container">
-      <h1 class="logo">1NT3Rnet</h1>
-      
-      <nav class="main-nav">
-        <div class="dropdown">
-          <a href="#">Áo</a>
-          <div class="dropdown-content">
-            <a href="#">Áo thun</a>
-            <a href="#">Áo sơ mi</a>
-            <a href="#">Áo khoác</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Quần</a>
-          <div class="dropdown-content">
-            <a href="#">Quần jeans</a>
-            <a href="#">Quần tây</a>
-            <a href="#">Quần kaki</a>
-            <a href="#">Quần short</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Váy</a>
-          <div class="dropdown-content">
-            <a href="#">Váy liền</a>
-            <a href="#">Váy xòe</a>
-            <a href="#">Váy midi</a>
-            <a href="#">Váy maxi</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Phụ kiện</a>
-          <div class="dropdown-content">
-            <a href="#">Mũ</a>
-            <a href="#">Khăn choàng</a>
-            <a href="#">Túi xách</a>
-            <a href="#">Thắt lưng</a>
-          </div>
-        </div>
-      </nav>
-
-      <div class="header-right">
-        <div class="user-info" id="userInfo">
-          <div class="auth-buttons">
-            <button class="auth-btn login-btn">Đăng nhập</button>
-            <button class="auth-btn register-btn">Đăng ký</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-  
-  <section class="hero">
-    <video autoplay muted loop class="bg-video">
-        <source src="videos/fashion.mp4" type="video/mp4">
-    </video>
-
-    <div class="hero-content">
-      <h2>Bộ sưu tập mùa đông</h2>
-      <p>Thiết kế tinh giản, thoải mái và ấm áp cho mọi ngày.</p>
-      <a href="#products" class="btn">Mua ngay</a>
-    </div>
-  </section>
-  
-  <section id="products">
-    <h2>Sản phẩm nổi bật</h2>
-    <div class="grid">
-      <div class="item">
-        <img src="images/ao_len.jpg" alt="Áo len basic">
-        <h3>Áo len basic</h3>
-        <p class="price">399.000₫</p>
-        <button class="buy-btn" onclick="requireLogin()">Mua ngay</button>
-      </div>
-      <div class="item">
-        <img src="images/ao_khoac_phao.jpg" alt="Áo khoác phao">
-        <h3>Áo khoác phao</h3>
-        <p class="price">1.299.000₫</p>
-        <button class="buy-btn" onclick="requireLogin()">Mua ngay</button>
-      </div>
-      <div class="item">
-        <img src="images/quan_jeans.jpg" alt="Quần jeans">
-        <h3>Quần jeans</h3>
-        <p class="price">699.000₫</p>
-        <button class="buy-btn" onclick="requireLogin()">Mua ngay</button>
-      </div>
-      <div class="item">
-        <img src="images/ao_somi.jpg" alt="Áo sơ mi">
-        <h3>Áo sơ mi</h3>
-        <p class="price">499.000₫</p>
-        <button class="buy-btn" onclick="requireLogin()">Mua ngay</button>
-      </div>
-      <div class="item">
-        <img src="images/ao_thun.jpg" alt="Áo thun cotton">
-        <h3>Áo thun cotton</h3>
-        <p class="price">299.000₫</p>
-        <button class="buy-btn" onclick="requireLogin()">Mua ngay</button>
-      </div>
-      <div class="item">
-        <img src="images/ao_hoodie.jpg" alt="Áo hoodie nỉ">
-        <h3>Áo hoodie nỉ</h3>
-        <p class="price">599.000₫</p>
-        <button class="buy-btn" onclick="requireLogin()">Mua ngay</button>
-      </div>
-    </div>
-  </section>
-  
-  <footer>
-    <div class="footer-content">
-      <div class="footer-section">
-        <h3>Về 1NT3Rnet</h3>
-        <ul>
-          <li><a href="#">Thông tin</a></li>          
-          <li><a href="#">Danh sách cửa hàng</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-section">
-        <h3>Trợ giúp</h3>
-        <ul>
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#">Chính sách trả hàng</a></li>
-          <li><a href="#">Chính sách bảo mật</a></li>
-          <li><a href="#">Tiếp cận</a></li>
-        </ul>
-      </div>
-      <div class="footer-section social">
-        <h3>Tài khoản xã hội 1NT3Rnet</h3>
-        <div class="social-icons">
-          <a href="#"><i class="fab fa-facebook"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-youtube"></i></a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy;CREDIT: JUST ME BRO!!!</p>
-    </div>
-  </footer>
-
-  <script>
-    // Xử lý hiển thị thông tin user khi trang load
-    document.addEventListener('DOMContentLoaded', function() {
-        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        const userInfo = document.getElementById('userInfo');
-        
-        // Nếu đã đăng nhập, chuyển hướng
-        if (currentUser) {
-            if (currentUser.role === 'admin') {
-                window.location.href = 'index.html';
-            } else {
-                window.location.href = 'index_user.html';
-            }
-            return;
-        }
-
-        // Hiển thị nút đăng nhập/đăng ký
-        userInfo.innerHTML = `
-            <div class="auth-buttons">
-                <button class="auth-btn login-btn">Đăng nhập</button>
-                <button class="auth-btn register-btn">Đăng ký</button>
+    <div class="unlog-container">
+        <div class="unlog-content">
+            <div class="unlog-icon">
+                <i class="fas fa-lock"></i>
             </div>
-        `;
-        
-        // Xử lý nút đăng nhập/đăng ký
-        document.querySelector('.login-btn').addEventListener('click', function() {
-            window.location.href = 'login.html';
-        });
-        
-        document.querySelector('.register-btn').addEventListener('click', function() {
-            window.location.href = 'register.html';
-        });
-    });
+            <h1>Vui lòng đăng nhập</h1>
+            <p>Bạn cần đăng nhập để truy cập trang này. Hãy đăng nhập để tiếp tục mua sắm.</p>
+            
+            <div class="unlog-actions">
+                <a href="login.html" class="btn btn-primary">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Đăng Nhập
+                </a>
+                <a href="register.html" class="btn btn-outline">
+                    <i class="fas fa-user-plus"></i>
+                    Đăng Ký
+                </a>
+            </div>
+            
+            <div class="unlog-features">
+                <h3>Tại sao nên đăng ký tài khoản?</h3>
+                <div class="features-grid">
+                    <div class="feature">
+                        <i class="fas fa-shopping-cart"></i>
+                        <h4>Theo dõi đơn hàng</h4>
+                        <p>Quản lý và theo dõi đơn hàng dễ dàng</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-heart"></i>
+                        <h4>Sản phẩm yêu thích</h4>
+                        <p>Lưu lại sản phẩm bạn yêu thích</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-bolt"></i>
+                        <h4>Mua sắm nhanh</h4>
+                        <p>Thanh toán nhanh chóng chỉ với 1 click</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-gift"></i>
+                        <h4>Ưu đãi đặc biệt</h4>
+                        <p>Nhận các ưu đãi dành riêng cho thành viên</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    // Yêu cầu đăng nhập khi click nút mua hàng
-    function requireLogin() {
-        alert('Vui lòng đăng nhập để mua hàng!');
-        window.location.href = 'login.html';
-    }
-  </script>
+    <style>
+        .unlog-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .unlog-content {
+            background: white;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
+        
+        .unlog-icon {
+            font-size: 4rem;
+            color: #e60012;
+            margin-bottom: 20px;
+        }
+        
+        .unlog-content h1 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 2.2rem;
+        }
+        
+        .unlog-content p {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .unlog-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .unlog-features h3 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 1.5rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .feature i {
+            font-size: 2.5rem;
+            color: #e60012;
+            margin-bottom: 15px;
+        }
+        
+        .feature h4 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .feature p {
+            color: #666;
+            font-size: 0.9rem;
+            margin: 0;
+            line-height: 1.4;
+        }
+        
+        @media (max-width: 768px) {
+            .unlog-content {
+                padding: 30px 20px;
+            }
+            
+            .unlog-actions {
+                flex-direction: column;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </body>
 </html>

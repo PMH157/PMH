@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1NT3Rnet - Thời Trang</title>
+    <title>1NT3Rnet - Thời Trang Thời Thượng</title>
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/style_user.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -13,15 +14,16 @@
         <aside class="sidebar">
             <div class="sidebar-header">
                 <h2 class="sidebar-logo">1NT3Rnet</h2>
+                <p class="sidebar-subtitle">Thời trang thời thượng</p>
             </div>
             <nav class="sidebar-nav">
                 <div class="nav-section">
                     <h3 class="nav-title">Danh Mục</h3>
                     <ul class="nav-menu">
                         <li class="nav-item">
-                            <a href="category.html?type=all" class="nav-link active">
+                            <a href="index.html" class="nav-link active">
                                 <i class="fas fa-home"></i>
-                                <span>Tất Cả Sản Phẩm</span>
+                                <span>Trang Chủ</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -51,7 +53,7 @@
                         <li class="nav-item">
                             <a href="category.html?type=vay" class="nav-link">
                                 <i class="fas fa-female"></i>
-                                <span>Váy</span>
+                                <span>Váy & Đầm</span>
                             </a>
                             <ul class="sub-menu">
                                 <li><a href="category.html?type=vay-lien">Váy liền</a></li>
@@ -86,9 +88,27 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link" id="sidebarProfile">
+                            <a href="login.html" class="nav-link">
                                 <i class="fas fa-user"></i>
-                                <span>Tài Khoản</span>
+                                <span>Đăng Nhập</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3 class="nav-title">Khuyến Mãi</h3>
+                    <ul class="nav-menu">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-percent"></i>
+                                <span>Giảm Giá 50%</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-shipping-fast"></i>
+                                <span>Miễn Phí Ship</span>
                             </a>
                         </li>
                     </ul>
@@ -103,8 +123,19 @@
                     <button class="sidebar-toggle" id="sidebarToggle">
                         <i class="fas fa-bars"></i>
                     </button>
+                    <div class="search-bar">
+                        <input type="text" placeholder="Tìm kiếm sản phẩm..." id="searchInput">
+                        <button class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
                     <div class="header-right">
-                        <div class="user-info" id="userInfo"></div>
+                        <div class="user-info" id="userInfo">
+                            <div class="auth-buttons">
+                                <a href="login.html" class="auth-btn login-btn">Đăng nhập</a>
+                                <a href="register.html" class="auth-btn register-btn">Đăng ký</a>
+                            </div>
+                        </div>
                         <a href="cart.html" class="cart-icon">
                             <i class="fas fa-shopping-cart"></i>
                             <span class="cart-count">0</span>
@@ -115,31 +146,139 @@
 
             <!-- Hero Section -->
             <section class="hero">
-                <video autoplay muted loop class="bg-video">
-                    <source src="videos/fashion.mp4" type="video/mp4">
-                </video>
-                <div class="hero-content">
-                    <h2>Bộ sưu tập mùa đông</h2>
-                    <p>Thiết kế tinh giản, thoải mái và ấm áp cho mọi ngày.</p>
-                    <a href="#featured-products" class="btn">Mua ngay</a>
+                <div class="hero-slider">
+                    <div class="slide active">
+                        <div class="slide-content">
+                            <h2>Bộ Sưu Tập Mùa Đông 2024</h2>
+                            <p>Khám phá những thiết kế ấm áp và thời thượng cho mùa đông này</p>
+                            <a href="category.html?type=ao-khoac" class="btn btn-primary">Mua Ngay</a>
+                        </div>
+                        <div class="slide-image">
+                            <img src="images/hero-winter.jpg" alt="Bộ sưu tập mùa đông">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="features">
+                <div class="container">
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <i class="fas fa-shipping-fast"></i>
+                            <h3>Miễn Phí Vận Chuyển</h3>
+                            <p>Cho đơn hàng từ 500.000₫</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-undo-alt"></i>
+                            <h3>Đổi Trả Trong 7 Ngày</h3>
+                            <p>Hoàn tiền 100%</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-lock"></i>
+                            <h3>Thanh Toán An Toàn</h3>
+                            <p>Bảo mật tuyệt đối</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-headset"></i>
+                            <h3>Hỗ Trợ 24/7</h3>
+                            <p>Luôn sẵn sàng hỗ trợ</p>
+                        </div>
+                    </div>
                 </div>
             </section>
 
             <!-- Featured Products -->
-            <section id="featured-products" class="products-section">
-                <h2>Sản Phẩm Nổi Bật</h2>
-                <div class="products-grid" id="productsGrid">
-                    <!-- Sản phẩm sẽ được load bằng JavaScript -->
+            <section class="featured-products">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Sản Phẩm Nổi Bật</h2>
+                        <p>Những sản phẩm được yêu thích nhất</p>
+                    </div>
+                    <div class="products-grid" id="featuredProducts">
+                        <!-- Sản phẩm sẽ được load bằng JavaScript -->
+                    </div>
                 </div>
             </section>
 
-            <footer>
-                <div class="footer-content">
-                    <!-- Footer content giữ nguyên -->
+            <!-- New Arrivals -->
+            <section class="new-arrivals">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Hàng Mới Về</h2>
+                        <p>Cập nhật những xu hướng mới nhất</p>
+                    </div>
+                    <div class="products-grid" id="newArrivals">
+                        <!-- Sản phẩm mới sẽ được load bằng JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Newsletter -->
+            <section class="newsletter-section">
+                <div class="container">
+                    <div class="newsletter-content">
+                        <h2>Đăng Ký Nhận Tin</h2>
+                        <p>Nhận thông tin khuyến mãi và sản phẩm mới nhất</p>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Nhập email của bạn..." required>
+                            <button type="submit" class="btn btn-primary">Đăng Ký</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="container">
+                    <div class="footer-content">
+                        <div class="footer-section">
+                            <h3>1NT3Rnet</h3>
+                            <p>Thương hiệu thời trang hàng đầu Việt Nam, mang đến những sản phẩm chất lượng với giá cả hợp lý.</p>
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-facebook"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-tiktok"></i></a>
+                                <a href="#"><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                        <div class="footer-section">
+                            <h4>Danh Mục</h4>
+                            <ul>
+                                <li><a href="category.html?type=ao">Áo</a></li>
+                                <li><a href="category.html?type=quan">Quần</a></li>
+                                <li><a href="category.html?type=vay">Váy & Đầm</a></li>
+                                <li><a href="category.html?type=phu-kien">Phụ Kiện</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-section">
+                            <h4>Hỗ Trợ</h4>
+                            <ul>
+                                <li><a href="#">Trung Tâm Trợ Giúp</a></li>
+                                <li><a href="#">Chính Sách Đổi Trả</a></li>
+                                <li><a href="#">Chính Sách Bảo Mật</a></li>
+                                <li><a href="#">Điều Khoản Dịch Vụ</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-section">
+                            <h4>Liên Hệ</h4>
+                            <div class="contact-info">
+                                <p><i class="fas fa-map-marker-alt"></i> 123 Nguyễn Trãi, Hà Nội</p>
+                                <p><i class="fas fa-phone"></i> 1900 1234</p>
+                                <p><i class="fas fa-envelope"></i> support@1nt3rnet.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-bottom">
+                        <p>&copy; 2024 1NT3Rnet. Tất cả quyền được bảo lưu.</p>
+                    </div>
                 </div>
             </footer>
         </main>
     </div>
+
+    <!-- Sidebar overlay for mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
     <script src="js/auth_check.js"></script>
     <script src="js/script_user.js"></script>

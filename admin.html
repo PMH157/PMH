@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Sản Phẩm - 1NT3Rnet Admin</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style_admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <h2 class="logo">1NT3Rnet</h2>
+                <p class="role">Administrator</p>
+            </div>
+            <nav class="admin-nav">
+                <ul>
+                    <li class="nav-item active">
+                        <a href="#dashboard">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Tổng Quan</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#products">
+                            <i class="fas fa-tshirt"></i>
+                            <span>Sản Phẩm</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#categories">
+                            <i class="fas fa-list"></i>
+                            <span>Danh Mục</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#orders">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>Đơn Hàng</span>
+                            <span class="badge">5</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#customers">
+                            <i class="fas fa-users"></i>
+                            <span>Khách Hàng</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#analytics">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Thống Kê</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html" class="switch-user">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span>Về Trang User</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <!-- Header -->
+            <header class="admin-header">
+                <div class="header-left">
+                    <button class="sidebar-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1 id="pageTitle">Tổng Quan</h1>
+                </div>
+                <div class="header-right">
+                    <div class="user-menu">
+                        <div class="user-info">
+                            <span class="username" id="adminUsername">Administrator</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="dropdown-menu">
+                            <a href="#profile"><i class="fas fa-user"></i> Hồ Sơ</a>
+                            <a href="#settings"><i class="fas fa-cog"></i> Cài Đặt</a>
+                            <a href="#" id="adminLogout"><i class="fas fa-sign-out-alt"></i> Đăng Xuất</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="content-section active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon revenue">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>25.4M</h3>
+                            <p>Doanh Thu</p>
+                            <span class="trend up">+12.5%</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon orders">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>1,248</h3>
+                            <p>Đơn Hàng</p>
+                            <span class="trend up">+8.3%</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon customers">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>5,672</h3>
+                            <p>Khách Hàng</p>
+                            <span class="trend up">+5.2%</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon products">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>156</h3>
+                            <p>Sản Phẩm</p>
+                            <span class="trend down">-2.1%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <h3>Doanh Thu Theo Tháng</h3>
+                        <div class="chart-placeholder">
+                            <canvas id="revenueChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Sản Phẩm Bán Chạy</h3>
+                        <div class="top-products">
+                            <div class="product-item">
+                                <img src="images/ao-thun-basic.jpg" alt="Áo Thun">
+                                <div class="product-info">
+                                    <h4>Áo Thun Cotton</h4>
+                                    <p>Đã bán: 245</p>
+                                </div>
+                                <span class="sales">245</span>
+                            </div>
+                            <div class="product-item">
+                                <img src="images/quan-jeans-slim.jpg" alt="Quần Jeans">
+                                <div class="product-info">
+                                    <h4>Quần Jeans Slim</h4>
+                                    <p>Đã bán: 189</p>
+                                </div>
+                                <span class="sales">189</span>
+                            </div>
+                            <div class="product-item">
+                                <img src="images/ao-khoac-denim.jpg" alt="Áo Khoác">
+                                <div class="product-info">
+                                    <h4>Áo Khoác Denim</h4>
+                                    <p>Đã bán: 156</p>
+                                </div>
+                                <span class="sales">156</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Products Section -->
+            <section id="products" class="content-section">
+                <div class="section-header">
+                    <h2>Quản Lý Sản Phẩm</h2>
+                    <button class="btn btn-primary" id="addProductBtn">
+                        <i class="fas fa-plus"></i> Thêm Sản Phẩm
+                    </button>
+                </div>
+
+                <!-- Product Form -->
+                <div class="product-form" id="productForm" style="display: none;">
+                    <h3 id="formTitle">Thêm Sản Phẩm Mới</h3>
+                    <form id="adminProductForm">
+                        <input type="hidden" id="productId">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="productName">Tên Sản Phẩm *</label>
+                                <input type="text" id="productName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="productCategory">Danh Mục *</label>
+                                <select id="productCategory" required>
+                                    <option value="">Chọn danh mục</option>
+                                    <option value="ao">Áo</option>
+                                    <option value="quan">Quần</option>
+                                    <option value="vay">Váy & Đầm</option>
+                                    <option value="phu-kien">Phụ Kiện</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="productPrice">Giá Bán *</label>
+                                <input type="number" id="productPrice" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="productOriginalPrice">Giá Gốc</label>
+                                <input type="number" id="productOriginalPrice">
+                            </div>
+                            <div class="form-group">
+                                <label for="productImage">Hình Ảnh *</label>
+                                <input type="text" id="productImage" placeholder="URL hình ảnh" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="productStock">Số Lượng *</label>
+                                <input type="number" id="productStock" value="1" required>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="productDescription">Mô Tả</label>
+                                <textarea id="productDescription" rows="4"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Lưu Sản Phẩm</button>
+                            <button type="button" class="btn btn-secondary" id="cancelForm">Hủy</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Products List -->
+                <div class="products-list">
+                    <div class="table-responsive">
+                        <table class="products-table">
+                            <thead>
+                                <tr>
+                                    <th>Hình Ảnh</th>
+                                    <th>Tên Sản Phẩm</th>
+                                    <th>Danh Mục</th>
+                                    <th>Giá</th>
+                                    <th>Tồn Kho</th>
+                                    <th>Trạng Thái</th>
+                                    <th>Thao Tác</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productsTableBody">
+                                <!-- Products will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Categories Section -->
+            <section id="categories" class="content-section">
+                <div class="section-header">
+                    <h2>Quản Lý Danh Mục</h2>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Thêm Danh Mục
+                    </button>
+                </div>
+                <div class="categories-grid">
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <h3>Áo</h3>
+                        <p>45 sản phẩm</p>
+                        <div class="category-actions">
+                            <button class="btn btn-sm">Chỉnh Sửa</button>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-vest"></i>
+                        </div>
+                        <h3>Quần</h3>
+                        <p>32 sản phẩm</p>
+                        <div class="category-actions">
+                            <button class="btn btn-sm">Chỉnh Sửa</button>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-female"></i>
+                        </div>
+                        <h3>Váy & Đầm</h3>
+                        <p>28 sản phẩm</p>
+                        <div class="category-actions">
+                            <button class="btn btn-sm">Chỉnh Sửa</button>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-vest-patches"></i>
+                        </div>
+                        <h3>Phụ Kiện</h3>
+                        <p>51 sản phẩm</p>
+                        <div class="category-actions">
+                            <button class="btn btn-sm">Chỉnh Sửa</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Orders Section -->
+            <section id="orders" class="content-section">
+                <div class="section-header">
+                    <h2>Quản Lý Đơn Hàng</h2>
+                </div>
+                <div class="orders-list">
+                    <div class="table-responsive">
+                        <table class="orders-table">
+                            <thead>
+                                <tr>
+                                    <th>Mã ĐH</th>
+                                    <th>Khách Hàng</th>
+                                    <th>Ngày Đặt</th>
+                                    <th>Tổng Tiền</th>
+                                    <th>Trạng Thái</th>
+                                    <th>Thao Tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#ORD-001</td>
+                                    <td>Nguyễn Văn A</td>
+                                    <td>15/12/2024</td>
+                                    <td>1,250,000₫</td>
+                                    <td><span class="status completed">Hoàn thành</span></td>
+                                    <td>
+                                        <button class="btn btn-sm">Xem</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#ORD-002</td>
+                                    <td>Trần Thị B</td>
+                                    <td>14/12/2024</td>
+                                    <td>890,000₫</td>
+                                    <td><span class="status pending">Đang xử lý</span></td>
+                                    <td>
+                                        <button class="btn btn-sm">Xem</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/auth_check.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

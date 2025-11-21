@@ -3,74 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng ký</title>
+    <title>Đăng Ký - 1NT3Rnet</title>
     <link rel="stylesheet" href="css/style_login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div class="login-container">
-        <div class="login-form">
-            <h2>Đăng ký</h2>
-            <form id="registerForm">
-                <div class="form-group">
-                    <label for="regUsername">Tên đăng nhập:</label>
-                    <input type="text" id="regUsername" name="regUsername" required>
+    <div class="auth-container">
+        <div class="auth-background">
+            <div class="background-overlay"></div>
+            <div class="background-content">
+                <h1>1NT3Rnet</h1>
+                <p>Tham gia cộng đồng thời trang của chúng tôi</p>
+                <div class="features">
+                    <div class="feature">
+                        <i class="fas fa-gift"></i>
+                        <span>Ưu đãi đặc biệt cho thành viên</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-bolt"></i>
+                        <span>Mua sắm nhanh chóng</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-heart"></i>
+                        <span>Theo dõi sản phẩm yêu thích</span>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="regPassword">Mật khẩu:</label>
-                    <input type="password" id="regPassword" name="regPassword" required>
+            </div>
+        </div>
+        
+        <div class="auth-form-container">
+            <div class="auth-form">
+                <div class="form-header">
+                    <h2>Đăng Ký</h2>
+                    <p>Tạo tài khoản mới để bắt đầu mua sắm</p>
                 </div>
-                <div class="form-group">
-                    <label for="confirmPassword">Xác nhận mật khẩu:</label>
-                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="regUsername">Tên đăng nhập *</label>
+                        <div class="input-group">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="regUsername" placeholder="Chọn tên đăng nhập" required>
+                        </div>
+                        <div class="input-feedback" id="usernameFeedback"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="regEmail">Email *</label>
+                        <div class="input-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="regEmail" placeholder="Nhập email của bạn" required>
+                        </div>
+                        <div class="input-feedback" id="emailFeedback"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="regFullName">Họ và tên *</label>
+                        <div class="input-group">
+                            <i class="fas fa-id-card"></i>
+                            <input type="text" id="regFullName" placeholder="Nhập họ và tên đầy đủ" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="regPassword">Mật khẩu *</label>
+                        <div class="input-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="regPassword" placeholder="Tạo mật khẩu mới" required>
+                            <button type="button" class="toggle-password" id="toggleRegPassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="password-strength" id="passwordStrength">
+                            <div class="strength-bar">
+                                <div class="strength-fill" id="strengthFill"></div>
+                            </div>
+                            <span class="strength-text" id="strengthText">Mật khẩu yếu</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">Xác nhận mật khẩu *</label>
+                        <div class="input-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="confirmPassword" placeholder="Nhập lại mật khẩu" required>
+                            <button type="button" class="toggle-password" id="toggleConfirmPassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="input-feedback" id="confirmPasswordFeedback"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phoneNumber">Số điện thoại</label>
+                        <div class="input-group">
+                            <i class="fas fa-phone"></i>
+                            <input type="tel" id="phoneNumber" placeholder="Nhập số điện thoại">
+                        </div>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="checkbox">
+                            <input type="checkbox" id="agreeTerms" required>
+                            <span class="checkmark"></span>
+                            Tôi đồng ý với <a href="#">Điều khoản dịch vụ</a> và <a href="#">Chính sách bảo mật</a>
+                        </label>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="checkbox">
+                            <input type="checkbox" id="newsletter">
+                            <span class="checkmark"></span>
+                            Đăng ký nhận bản tin khuyến mãi
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <span class="btn-text">Đăng Ký</span>
+                        <div class="btn-loading hidden">
+                            <div class="loading"></div>
+                            <span>Đang xử lý...</span>
+                        </div>
+                    </button>
+
+                    <div class="auth-divider">
+                        <span>Đã có tài khoản?</span>
+                    </div>
+
+                    <div class="auth-switch">
+                        <a href="login.html" class="btn btn-outline btn-full">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Đăng Nhập Ngay
+                        </a>
+                    </div>
+                </form>
+
+                <div class="auth-footer">
+                    <p>Bằng việc đăng ký, bạn đồng ý với <a href="#">Điều khoản dịch vụ</a> và <a href="#">Chính sách bảo mật</a> của chúng tôi.</p>
                 </div>
-                <button type="submit" class="btn-login">Đăng ký</button>
-                <p class="switch-form">
-                    Đã có tài khoản? <a href="login.html">Đăng nhập ngay</a>
-                </p>
-            </form>
+            </div>
         </div>
     </div>
 
     <!-- Modal thông báo thành công -->
     <div id="successModal" class="modal">
         <div class="modal-content">
-            <div class="modal-icon">✓</div>
-            <h3>Thành công!</h3>
-            <p>Đã đăng ký tài khoản thành công!</p>
-            <button id="modalOkBtn">OK</button>
+            <div class="modal-icon success">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Đăng Ký Thành Công!</h3>
+            <p>Chúc mừng bạn đã tạo tài khoản thành công. Bây giờ bạn có thể đăng nhập.</p>
+            <button class="modal-close-btn" id="goToLogin">Đăng Nhập Ngay</button>
         </div>
     </div>
 
-    <!-- Modal thông báo mật khẩu không khớp -->
-    <div id="passwordMismatchModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-icon error">⚠️</div>
-            <h3>Lỗi</h3>
-            <p>Mật khẩu xác nhận không khớp!</p>
-            <button class="modal-close-btn">OK</button>
-        </div>
-    </div>
-
-    <!-- Modal thông báo mật khẩu quá ngắn -->
-    <div id="passwordShortModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-icon error">⚠️</div>
-            <h3>Lỗi</h3>
-            <p>Mật khẩu phải có ít nhất 6 ký tự!</p>
-            <button class="modal-close-btn">OK</button>
-        </div>
-    </div>
-
-    <!-- Modal thông báo username đã tồn tại -->
-    <div id="usernameExistsModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-icon error">⚠️</div>
-            <h3>Lỗi</h3>
-            <p>Tên đăng nhập đã tồn tại! Vui lòng chọn tên khác.</p>
-            <button class="modal-close-btn">OK</button>
-        </div>
-    </div>
-
-    <script src="script_register.js"></script>
+    <script src="js/script_register.js"></script>
 </body>
 </html>
